@@ -16,6 +16,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.yourcompany.yourappname",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -27,10 +28,23 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-font",
+        {
+          "custom": {
+            "CambayBold": "./node_modules/@expo-google-fonts/cambay/Cambay_700Bold.ttf"
+          }
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "44de14fb-9ecb-4865-96da-a60128b2aac2"
+      }
     }
   }
 }
