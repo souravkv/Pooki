@@ -13,7 +13,7 @@ export default function({pin:{title ,img}}:{pin:{title:string | null ,img:string
         Image.getSize(img,(w,h)=>{setRation(w/h)}) 
     },[img])
 
-    return <View>
+    return <View style={{padding:5}}>
     <Image style={[styles.pinImage,{aspectRatio:ration}]} source={{uri:img}}/>
     <View>
 
@@ -21,15 +21,15 @@ export default function({pin:{title ,img}}:{pin:{title:string | null ,img:string
             <AntDesign  name="hearto" size={20}  color="gray" />
         </Pressable>
     </View>
-    <Text style={styles .pinText}> {title} </Text>
+    <Text numberOfLines={1} style={styles .pinText}> {title} </Text>
 </View>
 }
 
 const styles=StyleSheet.create({
 
     pinImage:{
-        width:"50%",borderRadius:25,
-        aspectRatio:1
+        width:"100%",borderRadius:25,
+        aspectRatio:1,backgroundColor:"blue"
         
     },
     
