@@ -1,19 +1,30 @@
 import { View,Image,Text ,StyleSheet, Pressable} from "react-native";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useEffect, useState } from "react";
+import { useNavigation } from "expo-router";
+import { useRoute } from "@react-navigation/native";
+import pinImages from "@/constants/pinImages";
 
-export default function({pin:{title ,img}}:{pin:{title:string | null ,img:string}}){
+export default function({pin:{ id,img,title}}:{pin:{id:string ,img:string,title:string | null}}){
 
+    
     const [ration,setRation] = useState(1);
 
-
+    const navigation = useNavigation();
+    
+    
+    const toPinnedScreen=()=>{
+        
+        //@ts-ignore
+        navigation.navigate("PinnedScreen",{id});
+    }
 
     useEffect(()=>{
         if(img) 
         Image.getSize(img,(w,h)=>{setRation(w/h)}) 
     },[img])
 
-    return <View style={{padding:5}}>
+    return <Pressable onPress={toPinnedScreen}  style={{padding:5}}>
     <Image style={[styles.pinImage,{aspectRatio:ration}]} source={{uri:img}}/>
     <View>
 
@@ -22,14 +33,14 @@ export default function({pin:{title ,img}}:{pin:{title:string | null ,img:string
         </Pressable>
     </View>
     <Text numberOfLines={1} style={styles .pinText}> {title} </Text>
-</View>
+</Pressable>
 }
 
 const styles=StyleSheet.create({
 
     pinImage:{
         width:"100%",borderRadius:25,
-        aspectRatio:1,backgroundColor:"blue"
+        aspectRatio:1,backgroundColor:"gray"
         
     },
     

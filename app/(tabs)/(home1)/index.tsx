@@ -7,13 +7,13 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function index() {
+export default function index1() {
   return (
 
     <Tab.Navigator 
-    screenOptions={{
+    screenOptions={{ 
       tabBarStyle:{backgroundColor:"black",paddingTop:15}, tabBarActiveTintColor:"white",
-      tabBarIndicatorStyle:{backgroundColor:"orange"}
+      tabBarIndicatorStyle:{backgroundColor:"orange"} 
     }}>
       <Tab.Screen name="Library" component={Library} />
       <Tab.Screen name="Liked" component={Liked} />

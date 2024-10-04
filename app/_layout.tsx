@@ -17,6 +17,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1, // Ensures SafeAreaView occupies the full height
-    backgroundColor: 'black', // Dark background to match your theme
+    backgroundColor: '#111111', // Dark background to match your theme
   },
 });

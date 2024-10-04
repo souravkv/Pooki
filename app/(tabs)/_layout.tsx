@@ -13,14 +13,14 @@ export default function TabLayout() {
     <Tabs screenOptions={{ tabBarStyle:{backgroundColor:"black" ,paddingTop:10},tabBarActiveTintColor: 'white' ,tabBarInactiveTintColor: 'gray', headerShown:false }}>
       
       <Tabs.Screen
-        name="Home"
+        name="(wallp)"
         options={{
           title: '',
           tabBarIcon: ({ color }) => <FontAwesome  size={28} name="th" color={color} />,
         }}
         />
       <Tabs.Screen
-        name="(toptabs)"
+        name="(home1)"
         options={{
           title: '',
           tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,
@@ -33,6 +33,8 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <FontAwesome size={28} name="cog" color={color} />,
         }}
         />
+       
+       
       
       
     </Tabs>
