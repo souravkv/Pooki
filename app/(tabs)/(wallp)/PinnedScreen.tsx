@@ -6,6 +6,10 @@ import Pin from "@/components/Pin";
 import { useNavigation } from "expo-router";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useRoute } from "@react-navigation/native";
+import * as MediaLibrary from 'expo-media-library';
+import * as FileSystem from 'expo-file-system';
+
+
 
 
 
@@ -13,10 +17,50 @@ import { useRoute } from "@react-navigation/native";
 export default function(){
 
     const route = useRoute  ();
+    //@ts-ignore
     const PinId = route.params?.id;
     const pin1 = pinImages.find(p=>p.id==PinId);
     const navigation= useNavigation();
 
+
+    //--------------------------------------------------------------------------------------------
+
+const handleDownload = async () => {
+    const imageUrl=pin1?.img;
+
+    let date = new Date().getTime();
+    let fileUri = FileSystem.documentDirectory + `${date}.jpg`;
+    try {
+        //@ts-ignore
+        const res = await FileSystem.downloadAsync(imageUrl, fileUri)
+        saveFile(res.uri)
+    } catch (err) {
+        console.log("FS Err: ", err)
+    }
+}
+
+const saveFile = async (fileUri:any) => {
+    const { status } = await MediaLibrary.requestPermissionsAsync();
+    if (status === "granted") {
+        try {
+            const asset = await MediaLibrary.createAssetAsync(fileUri);
+            const album = await MediaLibrary.getAlbumAsync('Download');
+            if (album == null) {
+                await MediaLibrary.createAlbumAsync('Download', asset, false);
+            } else {
+                await MediaLibrary.addAssetsToAlbumAsync([asset], album, false);
+            }
+        } catch (err) {
+            console.log("Save err: ", err)
+        }
+    } else if (status === "denied") {
+        alert("please allow permissions to download")
+    }
+}
+    //---------------------------------------------download -logic------------------
+
+
+   
     function goback(){
         navigation.goBack();
 
@@ -24,8 +68,8 @@ export default function(){
     return <View style={styles.container}>
       <View>
         <View style={styles.image}>
-
-      <Pin pin={pin1}></Pin>
+    
+      <Pin pin={pin1 as any}></Pin>
         </View>
       
       <TouchableOpacity style={styles.back} onPress={goback}>
@@ -33,8 +77,9 @@ export default function(){
       </TouchableOpacity>
 
       </View>
-  
-      <MaterialCommunityIcons name="download" size={35} style={styles.download}/>
+    <TouchableOpacity onPress={()=>{handleDownload()}}>
+            <MaterialCommunityIcons name="download" size={35} style={styles.download}/>
+    </TouchableOpacity>
       
       
 

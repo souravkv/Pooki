@@ -1,33 +1,45 @@
 {
   "expo": {
-    "name": "mkbhd-wall",
-    "slug": "mkbhd-wall",
+    "name": "pooki",
+    "slug": "the-pooki-app",
     "version": "1.0.0",
     "orientation": "default",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/naazi.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/naazi.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "sourav"
     },
     "android": {
-      "package": "com.yourcompany.yourappname",
+      "package": "sourav",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/naazi.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_MEDIA_LOCATION"
+      ]
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/naazi.png"
     },
     "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/nothing.ttf"]
+        }
+      ],
       "expo-router",
       [
         "expo-font",
@@ -43,7 +55,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "44de14fb-9ecb-4865-96da-a60128b2aac2"
+        "projectId": "e35d11dd-6eb3-4fb8-89cc-5b4781fa92ba"
       }
     }
   }

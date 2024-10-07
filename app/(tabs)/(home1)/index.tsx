@@ -12,7 +12,7 @@ export default function index1() {
 
     <Tab.Navigator 
     screenOptions={{ 
-      tabBarStyle:{backgroundColor:"black",paddingTop:15}, tabBarActiveTintColor:"white",
+      tabBarStyle:{backgroundColor:"black",paddingHorizontal:3,paddingVertical:10}, tabBarActiveTintColor:"gray",
       tabBarIndicatorStyle:{backgroundColor:"orange"} 
     }}>
       <Tab.Screen name="Library" component={Library} />

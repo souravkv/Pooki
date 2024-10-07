@@ -2,8 +2,8 @@ import { View,Image,Text ,StyleSheet, Pressable} from "react-native";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useEffect, useState } from "react";
 import { useNavigation } from "expo-router";
-import { useRoute } from "@react-navigation/native";
-import pinImages from "@/constants/pinImages";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
 
 export default function({pin:{ id,img,title}}:{pin:{id:string ,img:string,title:string | null}}){
 
@@ -24,7 +24,7 @@ export default function({pin:{ id,img,title}}:{pin:{id:string ,img:string,title:
         Image.getSize(img,(w,h)=>{setRation(w/h)}) 
     },[img])
 
-    return <Pressable onPress={toPinnedScreen}  style={{padding:5}}>
+    return <Pressable   onPress={toPinnedScreen}  style={{padding:5}}>
     <Image style={[styles.pinImage,{aspectRatio:ration}]} source={{uri:img}}/>
     <View>
 
@@ -40,7 +40,7 @@ const styles=StyleSheet.create({
 
     pinImage:{
         width:"100%",borderRadius:25,
-        aspectRatio:1,backgroundColor:"gray"
+        aspectRatio:1,backgroundColor:"black"
         
     },
     
